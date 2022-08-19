@@ -1,22 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Lightbox</title>
-</head>
-
-<body>
-    <header>
-        <h1>LightBox</h1>
-    </header>
-    <section>
-        <img src="img/nos.png" alt="img">
-    </section>
-    <script src="funciones.js"></script>
-</body>
-
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>LIGHTBOX</title>
+        <link rel="icon" type="image/x-icon" href="img/logo.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container px-4 px-lg-5 text-white">
+                <a class="navbar-brand" href="#!">LightBox</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Productos</a></li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi-cart-fill me-1"></i>
+                            Carrito
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog bg-dark">
+                    <div class="modal-content bg-dark border-warning">
+                        <div class="modal-header bg-dark border-warning">
+                            <h5 class="modal-title text-white" id="exampleModalLabel">Carrito</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body bg-dark">
+                            <div class="container">
+                                <table class="table text-white border-warning">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="items"></tbody>
+                                </table>
+                                <div class="row" id="cards"></div>
+                            </div>
+                            <div>
+                                <table class="table text-white border-warning">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">El valor final es:</th>
+                                            <th id="precioTotal" scope="col">$</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-warning">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-warning">Finalizar compra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </nav>
+        <header class="bg-black py-5">
+            <img src="img/portada nostros .png">
+        </header>
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                </div>
+            </div>
+        </section>
+        <footer class="text-center text-lg-start border border-warning mt-xl-5 pt-4">
+            <div class="container p-4">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                  <h5 class="text-uppercase mb-4 text-warning">Contacto</h5>
+                  <ul class="list-unstyled mb-4">
+                    <li>
+                      <a class="text-white"
+                        href="https://api.whatsapp.com/send?phone=5491138320897&text=Hola%20LightBox,%20tengo%20una%20consulta%20con%20respecto%20a"
+                        target="_blank" style="text-decoration:none">Tel: 01124574990</a>
+                    </li>
+                    <li>
+                      <a class="text-white" style="text-decoration:none">Email: Veladores@lightbox.com.ar</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                  <h5 class="text-uppercase mb-4 text-warning">Ubicación</h5>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a href="https://www.google.com/maps/place/San+Francisco+620,+B1849BEL+Claypole,+Provincia+de+Buenos+Aires/data=!4m2!3m1!1s0x95a32b575a33bc4d:0xd5551d0e601b2aed?sa=X&ved=2ahUKEwiq_rGKkeD4AhUwlZUCHQjCACAQ8gF6BAgJEAE"
+                        style="text-decoration:none" target="_blank" class="text-white">San Francisco 620, Claypole, Buenos
+                        Aires </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                  <h5 class="text-uppercase text-warning mb-4">Secciones</h5>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a href="productos.html" style="text-decoration:none" target="_blank" class="text-white">Productos</a>
+                    </li>
+                    <li>
+                      <a href="nosotros.html" style="text-decoration:none" target="_blank" class="text-white">Nosotros</a>
+                    </li>
+                    <li>
+                      <a href="clientes.html" style="text-decoration:none" target="_blank" class="text-white">Clientes</a>
+                    </li>
+                    <li>
+                      <a href="contacto.html" style="text-decoration:none" target="_blank" class="text-white">Contacto</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                  <h5 class="text-uppercase mb-4 text-white">Regístrate para recibir novedades</h5>
+                  <div class="form-outline form-white mb-4">
+                    <input type="email" id="form5Example2" class="form-control" />
+                  </div>
+                  <button type="submit"
+                    class="btn btn-outline-warning btn-block row justify-content-center">Subscribirse</button>
+                </div>
+              </div>
+            </div>
+            <div class="text-center p-3 border-top border-warning">
+              © 2022 Copyright:
+              <a class="text-white" href="https://lightbox-ar.netlify.app" style="text-decoration:none">LightBox.com.ar</a>
+            </div>
+          </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
