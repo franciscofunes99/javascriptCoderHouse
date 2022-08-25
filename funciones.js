@@ -52,14 +52,29 @@ function crearCarro() {
                     <td>$ ${elemento.producto.precio}</td>
                 </tr>
             `;
+
         }
 
     );
     contenedorCarritoCompras.innerHTML = renglonesCarrito;
+    localStorage.setItem("addCarro", JSON.stringify(carrito));
+
+
+
 
 }
 
 let carrito = [];
+
+if (localStorage.getItem("addCarro") != null) {
+    carrito = JSON.parse(localStorage.getItem("addCarro"));
+}
+//vacia carrito del Local storage
+
+function vaciarCarro() {
+    localStorage.clear("addCarro");
+}
+
 
 const contenedorCarritoCompras = document.querySelector('#items');
 const contenedorDeProductos = document.getElementsByClassName("row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4");
@@ -91,7 +106,7 @@ function crearCard(producto) {
     `;
     cardBody.append(footerCard);
     cardBody.append(buyButton);
-    
+
     let card = document.createElement("div");
     card.className = "card h-100 m-5 bg-black border-warning text-center";
     card.append(img);
@@ -102,7 +117,7 @@ function crearCard(producto) {
 
     buyButton.onclick = () => {
         let elementoCarro = new ProductosCarro(producto, 1);
-        alert("Se agrego un nuevo producto al carrito");
+        alert("Se agrego " + producto.nombre + " al carrito");
         carrito.push(elementoCarro);
         let total = valorTotal();
         let precioTotal = document.getElementById("precioTotal");
@@ -114,7 +129,7 @@ function crearCard(producto) {
 
 }
 
-function CreacionProductos() {
+function creacionProductos() {
     addProductos.innerHTML = "";
     producto.forEach(
         (producto) => {
@@ -126,6 +141,5 @@ function CreacionProductos() {
 
 };
 
-CreacionProductos();
-
+creacionProductos();
 
