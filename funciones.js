@@ -41,7 +41,7 @@ subirProductos();
 //funcion de agregando productos al carrito
 function crearCarro() {
     let renglonesCarrito = '';
-
+      
     carrito.forEach(
         (elemento) => {
             renglonesCarrito += `
@@ -73,6 +73,26 @@ if (localStorage.getItem("addCarro") != null) {
 
 function vaciarCarro() {
     localStorage.clear("addCarro");
+        //agregue biblioteca sweet alert a esta parte para que los usuarios al momento de vaciar el carrito confirmen si de verdad lo quieren hacer o mantener
+    Swal.fire({
+        title: 'Esta seguro de que desea eliminar los productos?',
+        icon: 'warning',
+        color: 	'#FFFFFF',
+        background:'#000000',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, vaciar.'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            //se confirma con otro alert que se vacio el carrito y se le comenta al usuario que si actualiza la pagina ve reflejado dicho cambio 
+          Swal.fire(
+            'Eliminado',
+            'Los cambios se verán reflejados al refrescar la pagina.',
+            'error'           
+          )
+        }
+      })
 }
 
 
@@ -117,7 +137,25 @@ function crearCard(producto) {
 
     buyButton.onclick = () => {
         let elementoCarro = new ProductosCarro(producto, 1);
-        alert("Se agrego " + producto.nombre + " al carrito");
+        // se agrega un alert sutil en la parte superior de la derecha indicandole al cte que se agrega producto al carrito, selecciono un fondo negro del mismo para que acompañe con la tematica de la pagina 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            color: 	'#FFFFFF',
+            background:'#000000',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Producto agregado al carrito!'
+          })
         carrito.push(elementoCarro);
         let total = valorTotal();
         let precioTotal = document.getElementById("precioTotal");
