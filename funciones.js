@@ -35,7 +35,24 @@ function subirProductos() {
     producto.push(new velador(07, "Velador Los simpsons", 1500, "./img/simpsons.jpg"));
 }
 subirProductos();
-
+//sweet alert agregado para que una vez finalizada la compra se le sea notificada la misma por email 
+function finalizarCompra(){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })     
+      Toast.fire({
+        icon: 'success',
+        title: 'Recibiras una confirmacion en tu email por la compra'  
+      })
+}
 
 
 //funcion de agregando productos al carrito
