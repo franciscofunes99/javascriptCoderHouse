@@ -7,10 +7,10 @@ class ProductosCarro {
 
 class velador {
     constructor(id, nombre, precio, foto) {
-        this.nombre = nombre
-        this.precio = precio
-        this.id = id
-        this.foto = foto
+        this.nombre = nombre;
+        this.precio = Number(precio);
+        this.id = id;
+        this.foto = foto;
     }
 }
 
@@ -35,6 +35,7 @@ function subirProductos() {
     producto.push(new velador(07, "Velador Los simpsons", 1500, "./img/simpsons.jpg"));
 }
 subirProductos();
+
 //sweet alert agregado para que una vez finalizada la compra se le sea notificada la misma por email 
 function finalizarCompra(){
     const Toast = Swal.mixin({
@@ -75,10 +76,6 @@ function crearCarro() {
     );
     contenedorCarritoCompras.innerHTML = renglonesCarrito;
     localStorage.setItem("addCarro", JSON.stringify(carrito));
-
-
-
-
 }
 
 let carrito = [];
@@ -115,14 +112,21 @@ function vaciarCarro() {
 
 const contenedorCarritoCompras = document.querySelector('#items');
 const contenedorDeProductos = document.getElementsByClassName("row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4");
+const veladorApi = [];
 
+async function apiVeladores(){
+    const APIGET ="/veladores.json"
+    const resp = await fetch(APIGET);
+    const data = await resp.json();
+    data.forEach(e => producto.push(new velador(e.id, e.nombre, e.precio, e.foto)))
+}
 
 const addProductos = contenedorDeProductos[0];
 
 //creacion de carta
 
 function crearCard(producto) {
-
+   
     let footerCard = document.createElement("div");
     footerCard.className = "card-footer p-4 pt-0 border-top-0"
 
@@ -148,7 +152,6 @@ function crearCard(producto) {
     card.className = "card h-100 m-5 bg-black border-warning text-center";
     card.append(img);
     card.append(cardBody);
-
 
     //evento de valor y agregado de producto
 
@@ -179,12 +182,12 @@ function crearCard(producto) {
         precioTotal.innerHTML = "$" + total;
         crearCarro();
     }
-
+   
     return card;
-
+    
 }
-
-function creacionProductos() {
+   async function creacionProductos() {
+    await apiVeladores(); 
     addProductos.innerHTML = "";
     producto.forEach(
         (producto) => {

@@ -1,0 +1,26 @@
+[
+    {   "id": "08",
+        "nombre": "Velador Avengers",
+        "precio": "1500",
+        "foto": "./img/avengers.jpg"
+        
+    },
+    {
+        "id": "09",
+        "nombre": "Velador Boca Juniors",
+        "precio": "1500",
+        "foto": "./img/boca.jpg"
+    },
+    {
+        "id": "010",
+        "nombre": "Velador Cactus",
+        "precio": "1500",
+        "foto": "./img/cactus.jpg"
+    },
+    {
+        "id": "011",
+        "nombre": "Velador Harry Potter",
+        "precio": "1500",
+        "foto": "./img/hp.jpg"
+    }
+]
