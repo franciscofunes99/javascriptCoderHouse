@@ -1,9 +1,52 @@
 [
-    {   "id": "08",
+    {
+        "id": "01",
+        "nombre": "Velador Friends",
+        "precio": "1500",
+        "foto": "./img/friends.jpg"
+    
+    },
+    {
+        "id": "02",
+        "nombre": "Velador Game of thrones",
+        "precio": "1500",
+        "foto": "./img/got.jpg"
+    },
+    {
+        "id": "03",
+        "nombre": "Velador Naruto",
+        "precio": "1500",
+        "foto": "./img/naruto.jpg"
+    },
+    {
+        "id": "04",
+        "nombre": "Velador Peaky Blinders",
+        "precio": "1500",
+        "foto": "./img/pb.jpg"
+    },
+    {
+        "id": "05",
+        "nombre": "Velador Racing Club",
+        "precio": "1500",
+        "foto": "./img/racing.jpg"
+    },
+    {
+        "id": "06",
+        "nombre": "Velador River Plate",
+        "precio": "1500",
+        "foto": "./img/river.jpg"
+    },
+    {
+        "id": "07",
+        "nombre": "Velador Los Simpsons",
+        "precio": "1500",
+        "foto": "./img/simpsons.jpg"
+    },
+    {
+        "id": "08",
         "nombre": "Velador Avengers",
         "precio": "1500",
         "foto": "./img/avengers.jpg"
-        
     },
     {
         "id": "09",

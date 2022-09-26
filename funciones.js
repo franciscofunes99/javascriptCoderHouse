@@ -21,23 +21,9 @@ function valorTotal() {
 }
 
 
-const producto = [];
-
-// creacion de productos
-
-function subirProductos() {
-    producto.push(new velador(01, "Velador Friends", 1500, "./img/friends.jpg"));
-    producto.push(new velador(02, "Velador Game Thrones", 1500, "./img/got.jpg"));
-    producto.push(new velador(03, "Velador Naruto", 1500, "./img/naruto.jpg"));
-    producto.push(new velador(04, "Velador Peaky Blinders", 1500, "./img/pb.jpg"));
-    producto.push(new velador(05, "Velador Racing Club", 1500, "./img/racing.jpg"));
-    producto.push(new velador(06, "Velador River Plate", 1500, "./img/river.jpg"));
-    producto.push(new velador(07, "Velador Los simpsons", 1500, "./img/simpsons.jpg"));
-}
-subirProductos();
 
 //sweet alert agregado para que una vez finalizada la compra se le sea notificada la misma por email 
-function finalizarCompra(){
+function finalizarCompra() {
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -45,21 +31,22 @@ function finalizarCompra(){
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-      })     
-      Toast.fire({
+    })
+    Toast.fire({
         icon: 'success',
-        title: 'Recibiras una confirmacion en tu email por la compra'  
-      })
+        title: 'Recibiras una confirmacion en tu email por la compra'
+    })
+
 }
 
 
 //funcion de agregando productos al carrito
 function crearCarro() {
     let renglonesCarrito = '';
-      
+
     carrito.forEach(
         (elemento) => {
             renglonesCarrito += `
@@ -83,39 +70,43 @@ let carrito = [];
 if (localStorage.getItem("addCarro") != null) {
     carrito = JSON.parse(localStorage.getItem("addCarro"));
 }
+
+
 //vacia carrito del Local storage
 
 function vaciarCarro() {
     localStorage.clear("addCarro");
-        //agregue biblioteca sweet alert a esta parte para que los usuarios al momento de vaciar el carrito confirmen si de verdad lo quieren hacer o mantener
+    //agregue biblioteca sweet alert a esta parte para que los usuarios al momento de vaciar el carrito confirmen si de verdad lo quieren hacer o mantener
     Swal.fire({
         title: 'Esta seguro de que desea eliminar los productos?',
         icon: 'warning',
-        color: 	'#FFFFFF',
-        background:'#000000',
+        color: '#FFFFFF',
+        background: '#000000',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, vaciar.'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
             //se confirma con otro alert que se vacio el carrito y se le comenta al usuario que si actualiza la pagina ve reflejado dicho cambio 
-          Swal.fire(
-            'Eliminado',
-            'Los cambios se verán reflejados al refrescar la pagina.',
-            'error'           
-          )
+            Swal.fire(
+                'Eliminado',
+                'Los cambios se verán reflejados al refrescar la pagina.',
+                'error'
+            )
         }
-      })
+    })
 }
 
-
+const registrarMail = document.getElementsByClassName("form-control");
 const contenedorCarritoCompras = document.querySelector('#items');
 const contenedorDeProductos = document.getElementsByClassName("row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4");
 const veladorApi = [];
+const producto = [];
 
-async function apiVeladores(){
-    const APIGET ="/veladores.json"
+
+async function apiVeladores() {
+    const APIGET = "/veladores.json"
     const resp = await fetch(APIGET);
     const data = await resp.json();
     data.forEach(e => producto.push(new velador(e.id, e.nombre, e.precio, e.foto)))
@@ -123,10 +114,10 @@ async function apiVeladores(){
 
 const addProductos = contenedorDeProductos[0];
 
-//creacion de carta
+//creacion de card
 
 function crearCard(producto) {
-   
+
     let footerCard = document.createElement("div");
     footerCard.className = "card-footer p-4 pt-0 border-top-0"
 
@@ -161,33 +152,36 @@ function crearCard(producto) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
-            color: 	'#FFFFFF',
-            background:'#000000',
+            color: '#FFFFFF',
+            background: '#000000',
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-          })
-          
-          Toast.fire({
+        })
+
+        Toast.fire({
             icon: 'success',
             title: 'Producto agregado al carrito!'
-          })
+        })
         carrito.push(elementoCarro);
         let total = valorTotal();
         let precioTotal = document.getElementById("precioTotal");
         precioTotal.innerHTML = "$" + total;
         crearCarro();
     }
-   
+
     return card;
-    
+
 }
-   async function creacionProductos() {
-    await apiVeladores(); 
+
+//se crea productos 
+
+async function creacionProductos() {
+    await apiVeladores();
     addProductos.innerHTML = "";
     producto.forEach(
         (producto) => {
@@ -200,4 +194,25 @@ function crearCard(producto) {
 };
 
 creacionProductos();
+
+function suscribir() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        color: '#FFFFFF',
+        background: '#000000',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Gracias por suscribirte!'
+    })
+}
 
